@@ -1,0 +1,29 @@
+//监听entry.scss
+sass --style expanded --watch entry.scss:main.css
+
+// 监听css文件 
+browser-sync start --server --files "css/*.css"
+// 监听css和html文件 
+browser-sync start --server --files "css/*.css, *.html"
+
+// (vuex项目中) 安装babel新版
+npm install --save-dev babel-preset-stage-2
+// .babelrc 也改成
+{
+	"preset": [
+		["es2015", { "modules": false}],
+		["stage-2"]
+	]
+}
+
+// vue 安装 sass 转义器, 然后修改webpack.conf.js进行调用
+npm install sass-loader node-sass webpack --save-dev
+
+
+
+//命令行
+$ifconfig
+可以读取当前ip等信息
+
+npm run build --report
+图形化展示打包的组件及其大小
