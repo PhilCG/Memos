@@ -1,1 +1,17 @@
-1
+toDo: [
+    vuex,
+    webworker,
+    antD,
+
+]
+
+doing: [
+    element,
+    axios,
+
+]
+
+done: [
+    badjs-report,
+
+]
