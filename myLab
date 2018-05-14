@@ -8,10 +8,10 @@ toDo: [
 doing: [
     element,
     axios,
-
+    badjs-report,
 ]
 
 done: [
-    badjs-report,
+    .vue component lazyLoad,
 
 ]
