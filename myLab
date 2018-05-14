@@ -7,11 +7,12 @@ toDo: [
 
 doing: [
     element,
-    axios,
-    badjs-report,
+    
 ]
 
 done: [
     .vue component lazyLoad,
-
+    axios,
+    badjs-report,
+    
 ]
