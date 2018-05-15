@@ -40,5 +40,25 @@
         offlineLogExp: 5 // 离线有效时间，默认最近5天
     })
     
+    //在具体的组件里
+    import axios from 'axios'
+    import BJ_REPORT from 'badjs-report'
+
+    //此处结合axios和.then()两个知识点
+    export default {
+        getdayPriceF7 (marketId, materialId, deliveryDate, number) {
+            return axios.get(BaseApi.GETDAYPRICEF7, {
+            params: {
+                t: Vue.prototype.accessToken,
+                marketId: marketId,
+                materialId: materialId,
+                deliveryDate: deliveryDate,
+                number: number || 0
+            }
+            }).then(function (response) {}, function () {
+                BJ_REPORT.report('Basejs Fail to getdayPriceF7 , marketId =' + marketId + ', materialId =' + materialId + ', deliveryDate =' + deliveryDate + ', number =' + number)
+            })
+        }
+    ｝
 ---------------------------------------------------------------------------------------------
 
