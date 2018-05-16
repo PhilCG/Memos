@@ -44,7 +44,7 @@
     import axios from 'axios'
     import BJ_REPORT from 'badjs-report'
 
-    //此处结合axios和.then()两个知识点
+    //此处结合axios和.then()两个知识点,在项目中是用Vue.http.get和Vue.http.post,这种是vue自带axios的方法
     export default {
         getdayPriceF7 (marketId, materialId, deliveryDate, number) {
             return axios.get(BaseApi.GETDAYPRICEF7, {
