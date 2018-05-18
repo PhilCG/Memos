@@ -14,5 +14,6 @@ done: [
     .vue component lazyLoad,
     axios,
     badjs-report,
+    vultr + shadowsocks + switchyomega 搭建vpn(mac+win10)
     
 ]
