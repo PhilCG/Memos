@@ -9,12 +9,13 @@ doing: [
     element,
     vux,
     sinopia,
+    npm包封装发布,
 ]
 
 done: [
     .vue component lazyLoad,
-    axios,
+    axios/Vue.http,
     badjs-report,
-    vultr + shadowsocks + switchyomega 搭建vpn(mac+win10)
+    Vultr + shadowsocks + switchyOmega 搭建vpn(mac+win10)
     
 ]
