@@ -17,5 +17,5 @@ done: [
     badjs-report,
     Vultr + shadowsocks + switchyOmega 搭建vpn(mac+win10),
     .vue组件打包为npm包并封装发布（包括复杂的run build的方法和简单粗暴的三文件打包方法）
-    
+    将全局数据api挂载到vue.prototype.api以供node_modules内vue组件引用(props等方法不适用)
 ]
