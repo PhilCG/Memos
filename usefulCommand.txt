@@ -19,8 +19,6 @@ npm install --save-dev babel-preset-stage-2
 // vue 安装 sass 转义器, 然后修改webpack.conf.js进行调用
 npm install sass-loader node-sass webpack --save-dev
 
-
-
 //命令行
 $ifconfig
 可以读取当前ip等信息
