@@ -2,14 +2,14 @@ toDo: [
     vuex,
     webworker,
     antD,
-
+    iview,
 ]
 
 doing: [
     element,
     vux,
     sinopia,
-    怀疑人生
+    怀疑人生,
 ]
 
 done: [
@@ -17,6 +17,6 @@ done: [
     axios/Vue.http,
     badjs-report,
     Vultr + shadowsocks + switchyOmega 搭建vpn(mac+win10)(安装顺序有影响：cmd/xshell=>ss=>swithchy),
-    .vue组件打包为npm包并封装发布（包括复杂的run build的方法和简单粗暴的三文件打包方法）
+    .vue组件打包为npm包并封装发布（包括复杂的run build的方法和简单粗暴的三文件打包方法）,
     将全局数据api挂载到vue.prototype.api以供node_modules内vue组件引用(props等方法不适用)
 ]
