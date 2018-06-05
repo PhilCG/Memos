@@ -68,3 +68,17 @@
 
 ---------------------------------------------------------------------------------------------
 
+4.vue路由的数据推入与读出
+    推入:
+    pushRoute () {
+        this.$router.push({
+          path: '/wfmap',
+          query: {billId: this.$route.query.billId}
+        })
+      }
+    }
+    读出：
+    readRoute () {
+      // console.log(this.$route.query.billId)
+      this.billId = this.$route.query.billId
+    }
