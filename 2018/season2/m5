@@ -82,3 +82,14 @@
       // console.log(this.$route.query.billId)
       this.billId = this.$route.query.billId
     }
+
+---------------------------------------------------------------------------------------------
+
+5.Object内容本身是无序的，不能像数组一样靠[1]来获取，我采取的处理方法是另外建立数组：
+    let myarr = []
+    for (let value in this.tipsMap) {
+        myarr.push(value)
+    }
+    然后根据myarr[1]取到key名，再去object[key]这样查询
+
+
