@@ -93,3 +93,22 @@
     然后根据myarr[1]取到key名，再去object[key]这样查询
 
 
+---------------------------------------------------------------------------------------------
+
+6.vue的route页面切换两种：不同模版页面和同模版不同传值的页面跳转刷新
+    不同模版：在method的方法下，通过push改变url
+        this.$router.push({
+            path: '/wfmap',
+            query: {billId: this.billId, procInstId: procInstId}
+        })
+    
+
+    同模版不同传值：在vue下，通过自带的监测，执行更新
+        watch: {
+            '$route' (to, from) {
+                // 数据更新操作
+                window.location.reload()
+                console.log('reload')
+            }
+        }
+    
