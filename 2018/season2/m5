@@ -136,3 +136,59 @@
         process.env.HOST === 'prod'/'xxx'
     根据这些就足够配置了
    
+---------------------------------------------------------------------------------------------
+9.js获取手机型号和手机操作系统版本号（https://blog.csdn.net/kerryqpw/article/details/76610287）
+
+    1、js 判断IOS版本号
+
+    先来观察 iOS 的 User-Agent 串：
+
+    iPhone 4.3.2 系统：
+    Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5
+    iPone 5.1 系统：
+    Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5
+    iPone 5.1.1 系统：
+    Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5
+
+    我们可以从 User-Agent 里发现一些规律：都含有“iPhone”关键词；含有用下划线分隔的系统版本号。嗯，我们可以用这两个规律来分辨出 iOS4 以上的系统。
+
+    function gt_ios4() {
+        // 判断是否 iPhone 或者 iPod
+        if((navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i))) {
+            // 判断系统版本号是否大于 4
+            return Boolean(navigator.userAgent.match(/OS [5-9]_\d[_\d]* like Mac OS X/i));
+        } else {
+            return false;
+        }
+    }
+
+    2、js判断手机浏览器操作系统和微信浏览器的方法
+
+    做手机端的前端开发，少不了对手机平台的判断。如，对于app下载，就要判断在Android平台下就显示Android下载提示；在iOS平台下就显示iOS下载提示。
+
+    今天就为大家介绍一下用js判断手机客户端平台及系统平台的方法：
+
+    <script type="text/javascript">
+    //手机端判断各个平台浏览器及操作系统平台
+    function checkPlatform(){
+        if(/android/i.test(navigator.userAgent)){
+            document.write("This is Android'browser.");//这是Android平台下浏览器
+        }
+        if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+            document.write("This is iOS'browser.");//这是iOS平台下浏览器
+        }
+        if(/Linux/i.test(navigator.userAgent)){
+            document.write("This is Linux'browser.");//这是Linux平台下浏览器
+        }
+        if(/Linux/i.test(navigator.platform)){
+            document.write("This is Linux operating system.");//这是Linux操作系统平台
+        }
+        if(/MicroMessenger/i.test(navigator.userAgent)){
+            document.write("This is MicroMessenger'browser.");//这是微信平台下浏览器
+        }
+    }
+    $(document).ready(function(){
+        alert(navigator.platform);
+        checkPlatform();
+    });
+    </script>
