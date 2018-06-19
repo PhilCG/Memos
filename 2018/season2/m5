@@ -140,9 +140,7 @@
 9.js获取手机型号和手机操作系统版本号（https://blog.csdn.net/kerryqpw/article/details/76610287）
 
     1、js 判断IOS版本号
-
     先来观察 iOS 的 User-Agent 串：
-
     iPhone 4.3.2 系统：
     Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5
     iPone 5.1 系统：
@@ -163,9 +161,7 @@
     }
 
     2、js判断手机浏览器操作系统和微信浏览器的方法
-
     做手机端的前端开发，少不了对手机平台的判断。如，对于app下载，就要判断在Android平台下就显示Android下载提示；在iOS平台下就显示iOS下载提示。
-
     今天就为大家介绍一下用js判断手机客户端平台及系统平台的方法：
 
     <script type="text/javascript">
@@ -192,3 +188,7 @@
         checkPlatform();
     });
     </script>
+---------------------------------------------------------------------------------------------
+10.http-server本地服务器用法（https://blog.csdn.net/qq_30100043/article/details/73105362）
+    具体平时会用到就是
+    $ http-server -a 127.0.0.1 -p 7070
