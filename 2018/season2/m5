@@ -115,4 +115,24 @@
 ---------------------------------------------------------------------------------------------
 7.小坑：在vue项目中绑定click事件之类的event时，若是原生html自然可以 @click="xxx"
     但若要往<vue-template>绑定则需要 @click.native 否则会被router-link之类的东西误解导致无法触发
+    尤其是在各种vue－ui的标签上
+---------------------------------------------------------------------------------------------
+8.让项目在npm run dev / npm run build时自动判断运行环境的方法：（https://www.jb51.net/article/137355.htm）
+    config部分，在dev.env.js写成
+        module.exports = merge(prodEnv, {
+            NODE_ENV: '"development"',
+            HOST: '"dev"'
+        }
+    在prod.env.js写成
+        let HOST = process.argv.splice(2)[0] || 'prod(此处是默认的开发选项词，test也行其他也行)' 
+        //截取build命令后边 --xxx的字符 用于判断 
+        
+        module.exports = {
+            NODE_ENV: '"production"',
+            HOST: '"' + HOST + '"'// 暂时默认是部署到测试服务器的配置，部署到正式服: $npm run build --prod
+        }
+    前置条件已经完成，然后在项目api部分可以查询到
+        process.env.NODE_ENV === 'development'／production'
+        process.env.HOST === 'prod'/'xxx'
+    根据这些就足够配置了
    
