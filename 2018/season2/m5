@@ -194,3 +194,6 @@
     $ http-server -a 127.0.0.1 -p 7070
 
 ---------------------------------------------------------------------------------------------
+11.无刷新改变url栏内容方法：http://caibaojian.com/pushstate.html
+    history.pushState( null, null, '/test-string')
+
