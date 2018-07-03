@@ -198,7 +198,9 @@
     history.pushState( null, null, '/test-string')
 
 ---------------------------------------------------------------------------------------------
-12.字符串转16进制
+12.字符串转16进制和url的原生转码方法（encodeURIComponent）
+    https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+    
     stringToHex (str) {
     let val = ''
     for (var i = 0; i < str.length; i++) {
