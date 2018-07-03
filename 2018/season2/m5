@@ -197,3 +197,16 @@
 11.无刷新改变url栏内容方法：http://caibaojian.com/pushstate.html
     history.pushState( null, null, '/test-string')
 
+---------------------------------------------------------------------------------------------
+12.字符串转16进制
+    stringToHex (str) {
+    let val = ''
+    for (var i = 0; i < str.length; i++) {
+        if (val === '') {
+        val = str.charCodeAt(i).toString(16)
+        } else {
+        val += ',' + str.charCodeAt(i).toString(16)
+        }
+    }
+    return val
+    }
