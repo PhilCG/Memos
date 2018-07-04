@@ -212,3 +212,34 @@
     }
     return val
     }
+
+---------------------------------------------------------------------------------------------
+13.sql学习
+    1:
+        SELECT
+        TO_CHAR(bill.fbizdate,'yyyy-MM-dd'),
+        bill.cfadminorgunitid,
+        AVG(nvl(entry.cfquantity,0) ) avgqty
+        FROM
+            ct_dis_specialbusiness bill
+            LEFT OUTER JOIN ct_bas_specialbusinesstype sbt ON bill.cfbusinesstypeid = sbt.fid
+            LEFT OUTER JOIN ct_dis_specialbusinessentry entry ON bill.fid = entry.fparentid
+        WHERE
+            1 = 1
+            AND TO_CHAR(bill.fbizdate,'yyyy-MM-dd') BETWEEN '2018-06-05' AND '2018-06-15'
+            AND bill.cfbillbasestatus = 4
+        GROUP BY
+            TO_CHAR(bill.fbizdate,'yyyy-MM-dd'),
+            bill.cfadminorgunitid
+        ORDER BY
+            TO_CHAR(bill.fbizdate,'yyyy-MM-dd') ASC
+     
+    2.
+        select
+        bill.cfbulkstorageorgun,
+        sto.fname_l2
+        from ct_dis_delivery bill
+        left outer join T_ORG_Storage sto on bill.cfbulkstorageorgun = sto.fid
+        where 1=1
+        and bill.CFBillBaseStatus=4
+        and bill.cfbulkstorageorgun is not null
