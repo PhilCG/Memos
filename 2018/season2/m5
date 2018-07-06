@@ -243,3 +243,21 @@
         where 1=1
         and bill.CFBillBaseStatus=4
         and bill.cfbulkstorageorgun is not null
+
+---------------------------------------------------------------------------------------------
+14.时间的字符串和时间戳互转换
+
+    toTimeStamp (timeString) { // yyyy-mm-dd转时间戳
+        let time = new Date(timeString)
+        let timeStamp = Date.parse(time)
+        console.log('timeStamp', timeStamp)
+        this.timeStamp = timeStamp
+        return Date(timeStamp)
+    },
+    toTimeString (timeStamp) { // 时间戳转yyyy-mm-dd
+        let time = new Date(timeStamp)
+        let timeString = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate()
+        console.log('timeString', timeString)
+        this.timeString = timeString
+        return timeString
+    }
