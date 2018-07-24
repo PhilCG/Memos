@@ -1,4 +1,18 @@
 1.vuex使用
     基于states\fetter\mutation\action\和 modules的vue项目管理管理状态插件
 ---------------------------------------------------------------------------------------------
-2.字符串存object key值，以后取用最好用obj[key]
+2.字符串存object key值，以后取用最好用obj[key],但仅限于取这一个子层级的值，
+    所以我们引入字符串转json的一些方法
+    https://segmentfault.com/a/1190000007368846
+    相信大部分人都知道或者去百度检索都会得到将js中的字符串转化成json对象常见的3种方法
+
+举例：
+
+var str = '{"name":"小明","age":18}';
+
+将字符串转化json对象：
+
+var json = JSON.parse(str);
+var json = eval("(" + str + ")");
+var json = (new Function("return " + str))();
+通过console.log()将json打印到控制台，不管是使用以上3种哪一种方法，都能在chrome控制台看到成功转化的结果：
