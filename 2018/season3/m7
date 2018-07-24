@@ -16,3 +16,20 @@ var json = JSON.parse(str);
 var json = eval("(" + str + ")");
 var json = (new Function("return " + str))();
 通过console.log()将json打印到控制台，不管是使用以上3种哪一种方法，都能在chrome控制台看到成功转化的结果：
+
+
+https://blog.csdn.net/YouZi_X/article/details/80393254
+
+在jsint中使用eval()解析json字符串转换成对象数组时，出现报错的情况，一般可以忽略。
+
+强迫症者可以使用如下JavaScript方法解决。
+
+//计算表达式的值
+function evil(fn) {
+    var Fn = Function;  //一个变量指向Function，防止有些前端编译工具报错
+    return new Fn('return ' + fn)();
+}
+原文：https://blog.csdn.net/xundh/article/details/4
+var data = eval("(" + jsondata + ")");
+// 使用
+var data = evil(jsondata)
