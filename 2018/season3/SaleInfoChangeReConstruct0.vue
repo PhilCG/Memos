@@ -25,17 +25,17 @@
       <!-- search! -->
       <div height="100%" v-if="show.search">
         <search
-        ref="search"
+        :placeholder="search.now.placeholder"
+        :results="search.list"
         v-model="search.keyword"
         position="absolute"
         auto-scroll-to-top
-        :placeholder="search.now.placeholder"
-        :results="search.list"
         @on-change="search_getList"
         @result-click="search_resultClick"
         @on-submit="search_submit"
         @on-cancel="search_cancel"
         @on-focus="search_focus"
+        ref="search"
         ></search>
       </div>
       <!-- search! end -->
@@ -107,8 +107,7 @@
             type: '',
             placeholder: '',
             keyNumber: 0,
-            ajax: function () {},
-            passResult: function () {}
+            ajax: function () {}
             // jsonIndex: function () {},
             // jsonKey: function () {},
             // localKey: function () {}
@@ -118,28 +117,25 @@
               type: 'SALEATTRIBUTE',
               placeholder: '请选择销售类型',
               ajax: (keyword, successCallback, errorCallback) => {
-                let success = (json) => {
-                  let ajaxList = []
-                  let resData = json.data.data
-                  for (let i = 0; i < resData.length; i++) {
-                    ajaxList.push({
-                      // 首项默认title，此为搜索列表显示名称，其它左边命名key值时要与保存赋值位置的key名对应
-                      title: resData[i].name,
-                      name: resData[i].name,
-                      id: resData[i].id,
-                      number: resData[i].number
-                    })
+                return (keyword, successCallback, errorCallback) => {
+                  let success = (json) => {
+                    let searchArray = []
+                    let resData = json.data.data
+                    for (let i = 0; i < resData.length; i++) {
+                      searchArray.push({
+                        // title为搜索列表显示名称，其它左边命名key值时要与保存赋值位置的key名对应
+                        title: resData[i].name,
+                        name: resData[i].name,
+                        id: resData[i].id,
+                        number: resData[i].number
+                      })
+                    }
+                    successCallback(searchArray, json)
                   }
-                  successCallback(ajaxList, json)
-                }
-                let error = (json) => { errorCallback(json) }
-                api.Base.getSaleAttributeInfo('', keyword).then(success, error)
-              },
-              passResult: (ajaxListItem, condition) => {
-                if (condition) {
-                  this.perform.page.name = ajaxListItem.name
-                  this.perform.page.id = ajaxListItem.id
-                  this.perform.page.number = ajaxListItem.number
+                  let error = (json) => {
+                    errorCallback(json)
+                  }
+                  api.Base.getSaleAttributeInfo('', keyword).then(success, error)
                 }
               }
               // 默认下列json的key值直接从json.data.data目录取到，否则在此处声明
@@ -175,10 +171,10 @@
       // this.setHeight()
     },
     methods: {
-      // myEval (str) {
-      //   let Fn = Function // 一个变量指向Function，防止有些前端编译工具报错
-      //   return new Fn('return ' + str)()
-      // },
+      myEval (str) {
+        let Fn = Function // 一个变量指向Function，防止有些前端编译工具报错
+        return new Fn('return ' + str)()
+      },
       testLog () {
         this.search_resultClick()
         console.log(this.search)
@@ -205,20 +201,15 @@
           console.log('this.search.now', this.search.now)
           this.show_change('search', true)
           this.search_getList()
-          // this.$refs.search.focus()
-          setTimeout(() => {
-            this.$refs.search.onFocus()
-          }, 1)
-          // this.$refs.search.search_focus()
-          // this.search_focus()
+          // this.$refs.search.search_onFocus()
           window.scrollTo(0, 0)
         }
       },
       search_getList: debounce(
         function () {
-          let successCallback = (ajaxList, json) => {
-            // console.log('searchArray', searchArray)
-            this.search.list = ajaxList
+          let successCallback = (searchArray, json) => {
+            console.log('searchArray', searchArray)
+            this.search.list = searchArray
             /* jshint ignore:start */
             // this.search.list = eval('return ' + this.search.now.jsonIndex)
             /* jshint ignore:end */
@@ -240,16 +231,22 @@
           let errorCallback = (json) => {
             this.$vux.toast.text('请求失败')
           }
-          // let searchAjax = this.search.now.ajax()
-          // searchAjax(this.search.keyword, successCallback, errorCallback)
-          this.search.now.ajax(this.search.keyword, successCallback, errorCallback)
+          let searchAjax = this.search.now.ajax()
+          searchAjax(this.search.keyword, successCallback, errorCallback)
         }
       ),
       // func_eval (a, b) {
       //   return window.eval('(' + a + '=' + b + ')')
       // },
       search_cancel () {
-        this.search_reset()
+        this.search.now = {
+          type: '',
+          placeholder: '',
+          ajax: function () {}
+          // jsonIndex: function () {},
+          // jsonKey: function () {},
+          // localKey: function () {}
+        }
         this.show_change('search', false)
       },
       search_focus () {
@@ -267,33 +264,23 @@
         //   thisLocalKey = thisJsonKey
         // }
         console.log('item', item + 'this.search.type', this.search.type)
-
-        // 没有特殊运行要求的直接传值就好，有特殊要求的就做一下判断
         if (this.search.now.type === 'SALEATTRIBUTE') {
-          this.search.now.passResult(item, true)
-          // this.perform.page.name = item.name
-          // this.perform.page.id = item.id
-          // this.perform.page.number = item.number
-          // console.log('result', this.perform.page)
-        // } else if () {
-        } else {
-          this.search.now.passResult(item, true)
+          this.perform.page.name = item.name
+          this.perform.page.id = item.id
+          this.perform.page.number = item.number
+          console.log('result', this.perform.page)
         }
-        this.search_reset()
-        this.show_change('search', false)
-      },
-      search_reset () {
-        this.search.keyword = ''
+        this.keyword = ''
         this.search.list = []
         this.search.now = {
           type: '',
           placeholder: '',
-          ajax: function () {},
-          passResult: function () {}
+          ajax: function () {}
           // jsonIndex: function () {},
           // jsonKey: function () {},
           // localKey: function () {}
         }
+        this.show_change('search', false)
       }
       /* search! end */
     }
