@@ -33,3 +33,15 @@ function evil(fn) {
 var data = eval("(" + jsondata + ")");
 // 使用
 var data = evil(jsondata)
+
+---------------------------------------------------------------------------------------------
+webpack的坑，在assets里声明通用js时，由于之后编译打包路径会改变，所以不能直接使用静态路径，
+要靠import来动态绑定路径：
+
+import ICONBACK_URL from '../img/icon_nav_back.png'
+import ICONADD_URL from '../img/icon_nav_add.png'
+
+export const ButtonList = { // 按钮声明与函数传入接口
+  addEntry: {iconUrl: ICONCELL_URL, name: '添加分录', msg: ''}, // 这行会成功
+  back: {iconUrl: '../img/icon_nav_back.png', name: '返回', msg: ''} // 这行会报错
+}
