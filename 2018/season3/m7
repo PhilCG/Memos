@@ -49,8 +49,10 @@ export const ButtonList = { // 按钮声明与函数传入接口
 ---------------------------------------------------------------------------------------------
 object深拷贝
 开发自己的模版时遇到这个问题，obj1=obj2这种简单粗暴的复制方法，因为只是指向同一个内存地址，
-所以只要一方改变另一方也会改变，解决方法是myObj = Object.assign(obj1, obj2)
+所以只要一方改变另一方也会改变，
 
+第一次尝试的解决方法是myObj = Object.assign(obj1, obj2)，也属于浅拷贝，
+但能实现一层子层级的拷贝
 /* entry! */
       entry_resetInit () {
         this.settlement.entryReset = Object.assign({}, this.settlement.entryEdit)
@@ -59,7 +61,13 @@ object深拷贝
         console.log(this.settlement.entryReset)
       },
 
-
+然后因为要拷贝的都是json数据，没有函数内容，所以可以放心大胆的用这个深拷贝方法
+/* entry! */
+      entry_resetInit () {
+        this.settlement.entryReset = JSON.parse(JSON.stringify(this.settlement.entryEdit))
+        this.bonus.entryReset = JSON.parse(JSON.stringify(this.bonus.entryEdit))
+        this.charge.entryReset = JSON.parse(JSON.stringify(this.charge.entryEdit))
+      },
 
 
 
