@@ -68,7 +68,19 @@ object深拷贝
         this.bonus.entryReset = JSON.parse(JSON.stringify(this.bonus.entryEdit))
         this.charge.entryReset = JSON.parse(JSON.stringify(this.charge.entryEdit))
       },
+---------------------------------------------------------------------------------------------
+js小数处理问题：（https://www.jb51.net/article/134067.htm）
 
+js保留两位小数方法总结
+转载  更新时间：2018年01月31日 10:09:58   投稿：laozhang     我要评论
+
+本篇文章给大家总结了js保留两位小数的各种方法以及每种方法的实例代码分析，如果大家对此有需要，一起来学习下js保留两位小数的方法吧。
+本文是小编针对js保留两位小数这个大家经常遇到的经典问题整理了在各种情况下的函数写法以及遇到问题的分析，以下是全部内容：
+
+一、我们首先从经典的“四舍五入”算法讲起
+1、四舍五入的情况
+var num =2.446242342;
+num = num.toFixed(2); // 输出结果为 2.45
 
 
 
