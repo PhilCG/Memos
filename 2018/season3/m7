@@ -82,6 +82,11 @@ js保留两位小数方法总结
 var num =2.446242342;
 num = num.toFixed(2); // 输出结果为 2.45
 
+或者先利用弱类型转字符串为数字
+let num = this.entrys.billweight - 0
+再
+num = Math.floor(num * 100) / 100
+
 
 
 
