@@ -264,3 +264,26 @@
 
 ---------------------------------------------------------------------------------------------
 15.
+let arr1 = [{"originUnitName":null,"bizDate":"2017-10-02","qty":388,"avgWeight":48.2},{"originUnitName":null,"bizDate":"2017-10-06","qty":252,"avgWeight":44.44},{"originUnitName":null,"bizDate":"2017-10-02","qty":140,"avgWeight":47}]
+var arr2 = []
+arr2.push(arr1[0].bizDate)
+if(arr1.length>1){
+for(let i=0;i<arr1.length-1;i++){if(arr1[i].bizDate !== arr1[i+1].bizDate){arr2.push(arr1[i+1].bizDate)}}
+}
+var obj0 = {}
+for(let i=0;i<arr1.length;i++){if(obj0[arr1[i].bizDate]){obj0[arr1[i].bizDate].push(arr1[i])}else{obj0[arr1[i].bizDate]=[arr1[i]]}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
