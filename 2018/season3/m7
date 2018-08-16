@@ -93,6 +93,19 @@ num = Math.floor(num * 100) / 100
 js千位符 | js 千位分隔符 | js 金额格式化
 https://blog.csdn.net/pengpengpeng85/article/details/53195618
 
+numberFormat (num, isMoney) {
+  if (!num) {
+    return '-'
+  }
+  if (isMoney) {
+    num = parseFloat(num).toFixed(2).toString().split('.')
+    num[0] = num[0].replace(new RegExp('(\\d)(?=(\\d{3})+$)', 'ig'), '$1,')
+    return num.join('.')
+  } else {
+    return num
+  }
+}
+
 
 
 
