@@ -256,7 +256,8 @@
     },
     toTimeString (timeStamp) { // 时间戳转yyyy-mm-dd
         let time = new Date(timeStamp)
-        let timeString = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate()
+        let timeString = time.getFullYe
+        ar() + '-' + (time.getMonth() + 1) + '-' + time.getDate()
         console.log('timeString', timeString)
         this.timeString = timeString
         return timeString
@@ -275,7 +276,7 @@ var obj0 = {}
 for(let i=0;i<arr1.length;i++){if(obj0[arr1[i].bizDate]){obj0[arr1[i].bizDate].push(arr1[i])}else{obj0[arr1[i].bizDate]=[arr1[i]]}}
 
 
-
+愚蠢是否一种权利，存在是否最高必要，虚无以外有没有终极答案？
 
 
 
