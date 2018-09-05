@@ -112,6 +112,39 @@ numberFormat (num, isMoney) {
   首先将你的运行环境(微信、企业微信)和开发组件(vue、vux、echart)升级到最新，
   然后怀疑js桥(jsdk)等网络中间部分的版本
   最后沐浴焚香，吃好喝好，等死告辞
+---------------------------------------------------------------------------------------------
+vue父子组件通讯：用$ref调用vue子组件方法（https://blog.csdn.net/sinat_36422236/article/details/80363983
+给子组件添加ref属性然后，通过vm.$refs来调用子组件的methods中的方法或者获得data
+
+直接看代码
+
+子组件：
+    methods:{
+      childMethods() {
+        alert("I am child's methods")
+      }
+    },
 
 
+父组件： 在子组件中加上ref即可通过this.$refs.ref.method调用
+<template>
+  <div @click="parentMethod">
+    <children ref="c1"></children>
+  </div>
+</template>
+
+<script>
+  import children from 'components/children/children.vue'
+  export default {
+    components: {      
+      'children': children
+    },
+    methods:{
+      parentMethod() {
+        console.log(this.$refs.c1) //返回的是一个vue对象，可以看到所有添加ref属性的元素
+        this.$refs.c1.childMethods(); 
+      }
+    }
+  }
+</script>
 
