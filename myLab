@@ -14,7 +14,7 @@ doing: [
     iview / iview weapp,
     EChart,
     react,
-    
+    Next(https://zh.nuxtjs.org/guide)
 ]
 
 done: [
