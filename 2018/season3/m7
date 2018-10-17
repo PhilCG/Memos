@@ -176,7 +176,7 @@ rm -rf .git 清除git信息
         return rule.test(carNum)
       },
 
-
+1
 
 
 
