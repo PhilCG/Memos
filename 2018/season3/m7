@@ -52,7 +52,7 @@ object深拷贝
 所以只要一方改变另一方也会改变，
 
 第一次尝试的解决方法是myObj = Object.assign(obj1, obj2)，也属于浅拷贝，
-但能实现一层子层级的拷贝
+但能实现一层子层级的拷贝，key名重复时会覆盖
 /* entry! */
       entry_resetInit () {
         this.settlement.entryReset = Object.assign({}, this.settlement.entryEdit)
@@ -176,7 +176,7 @@ rm -rf .git 清除git信息
         return rule.test(carNum)
       },
 
-1
+
 
 
 
