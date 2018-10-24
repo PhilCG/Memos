@@ -1,8 +1,63 @@
 1.你的es6还在继续：（http://es6.ruanyifeng.com/#docs/function
 
+各种小坑及其解决方法
+1.mac下读取文档文件命令$ cat   (windiws下为type)
+2.错误的git init目录，删除命令可以用$ rm -rf .git
+3.require()在是在nodejs下运行的命令   (非requirejs环境下)
+4.setInterval ／ setTimeout 的正确使用方法 :{
+        var a；
+        a ＝ window.setInterval(main,500);
+        window.setTimeout(main,500);
+    }
+    总之先声明a，再赋值给a，还有待执行函数不要小括号,
+5.当前页面不允许爬虫访问的方法：robot.txt (https://zh.wikipedia.org/wiki/Robots.txt)
+6.手机下载页面到桌面，图标设置方法:{
+    <link rel="shortcut icon" href="c/0001/img/icon/favi.png" sizes="128x128">//安卓
+    <link rel="apple-touch-icon" href="c/0001/img/icon/favi.ico" sizes="128x128">//IOS
+详细方法：http://www.kylejlarson.com/blog/adding-an-icon-for-iphone-ipad-android-to-your-website/
+7.安卓与ios下的黑体名称不一样，'SimHei'／'PingFang SC' 需要多次声明
+8.
 ---------------------------------------------------------------------------------------------
+2.pc和移动端页面识别跳转
+
+if (navigator.userAgent.match(/AppleWebKit.*Mobile.*/) || (navigator.userAgent.indexOf('Windows Phone') != -1) || (navigator.userAgent.toLowerCase().indexOf('android') != -1) || (navigator.userAgent.toLowerCase().indexOf('linux') != -1)) window.location.href = '../../m/specialsite/wifilife/index.html'
+//pc->sp
+
+if(!(navigator.userAgent.match(/AppleWebKit.*Mobile.*/) || (navigator.userAgent.indexOf('Windows Phone') != -1) || (navigator.userAgent.toLowerCase().indexOf('android') != -1) || (navigator.userAgent.toLowerCase().indexOf('linux') != -1))) window.location.href = '../../../specialsite/wifilife/index.html'
+//sp->pc
 
 
+//pc->sp
+var commonURL = '';
+
+    function mobile_device_detect(url) {
+        var thisOS = navigator.platform;
+        var os = new Array("iPhone", "iPod", "iPad", "android", "Nokia", "SymbianOS", "Symbian", "Windows Phone", "Phone", "Linux armv71", "MAUI", "UNTRUSTED/1.0", "Windows CE", "BlackBerry", "IEMobile");
+        for (var i = 0; i < os.length; i++) {
+            if (thisOS.match(os[i])) {
+                window.location = url;
+            }
+        }
+        if (navigator.platform.indexOf('iPad') != -1) {
+            window.location = url;
+        }
+        var check = navigator.appVersion;
+        if (check.match(/linux/i)) {
+            if (check.match(/mobile/i) || check.match(/X11/i)) {
+                window.location = url;
+            }
+        }
+        Array.prototype.in_array = function(e) {
+            for (i = 0; i < this.length; i++) {
+                if (this[i] == e)
+                    return true;
+            }
+            return false;
+        }
+    }
+    mobile_device_detect("/demos/canon0320/sp/index.html"); /*指定跳转地址*/
+
+---------------------------------------------------------------------------------------------
 
 
 
