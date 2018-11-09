@@ -61,6 +61,7 @@ var commonURL = '';
 
 github上星星最多的vue触摸事件库只支持vue1.0，千万不要用
 
+dom根元素为绝对定位时（adsolute/fixed）无法使用window.scroll(x, y)等方法来滚动页面位置
 
 
 
