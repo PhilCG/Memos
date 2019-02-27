@@ -25,4 +25,6 @@ elif a == 1 :
 else :
     print(a)
 ----------------------------------------------------------------
-oracle建表方法
+oracle sql 建表/删表方法
+create table xxx
+drop table xxx
