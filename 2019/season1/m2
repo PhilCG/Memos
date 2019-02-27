@@ -13,3 +13,12 @@ https://blog.csdn.net/adley_app/article/details/79245736
 ----------------------------------------------------------------
 4.前端界面原型绘制工具axure（不是微软云服务那个azure）
 https://zhuanlan.zhihu.com/p/29035709
+
+----------------------------------------------------------------
+python中的条件判断：(注意else一定要加冒号，很奇怪)
+if a = 0
+    print(0)
+elif a = 1
+    print(1)
+else :
+    print(2)
